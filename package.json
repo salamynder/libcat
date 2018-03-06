@@ -1,0 +1,66 @@
+{
+  "name": "libcat",
+  "description": "simple librarians catalogue with allegro-style input for kittens (POW!)",
+  "version": "0.0.1",
+  "homepage": "",
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "salamynder",
+    "email": "rtbtobi@gmail.com"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/"
+  },
+  "engines": {
+    "node": "^8.0.0",
+    "yarn": ">= 0.18.0"
+  },
+  "scripts": {
+    "test": "yarn run eslint && yarn run mocha",
+    "eslint": "eslint src/. test/. --config .eslintrc.json",
+    "start": "node src/",
+    "mocha": "mocha test/ --recursive --exit"
+  },
+  "dependencies": {
+    "@feathersjs/client": "^3.4.2",
+    "@feathersjs/configuration": "^1.0.2",
+    "@feathersjs/errors": "^3.3.0",
+    "@feathersjs/express": "^1.2.0",
+    "@feathersjs/feathers": "^3.1.3",
+    "@feathersjs/socketio": "^3.2.0",
+    "@feathersjs/socketio-client": "^1.1.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "compression": "^1.7.1",
+    "cors": "^2.8.4",
+    "elasticsearch": "^14.1.0",
+    "feathers-elasticsearch": "^1.0.0",
+    "feathers-mithril": "^2.1.0",
+    "feathers-reactive": "^0.6.0",
+    "helmet": "^3.11.0",
+    "immutable": "^3.8.2",
+    "lodash": "^4.17.5",
+    "mithril": "^1.1.6",
+    "serve-favicon": "^2.4.5",
+    "webpack": "^3.11.0",
+    "webpack-dev-middleware": "^2.0.6",
+    "webpack-hot-middleware": "^2.21.0",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "chunking-streams": "^0.0.8",
+    "detect-newline": "^2.1.0",
+    "eslint": "^4.18.0",
+    "mocha": "^5.0.1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}

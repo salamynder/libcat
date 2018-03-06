@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <title>Welcome to libcat - a simple librarians catalogue with allegro-style input</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+        font-weight: 400;
+        font-size: 16px;
+        background-image: url("./pixabay-bookshelf-dimmed.jpg")
+      }
+
+      .center-text {
+        text-align: center;
+        color: gray;
+      }
+
+      main {
+        margin-top: 50px;
+        padding: 30px;
+        opacity: 0.9;
+      }
+
+      img.logo {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        font-size: 2em;
+        font-weight: 100;
+        padding-bottom: 40px;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+      }
+
+      footer p {
+        font-weight: 300;
+        font-size: 1.0em;
+      }
+
+      a {
+        color: rgb(62, 63, 63);
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        color: #b35f05;
+      }
+      a:active{
+        color: #b35f05;
+      }
+      textarea {
+        width: 66vw;
+	      height: 66vh;
+	      border: 1px solid #ccc;
+	      padding: 5px;
+	      font-family: Tahoma, sans-serif;
+        font-size: 14pt;
+      }
+      #app {
+        display: grid;
+        grid-gap: 25px;
+        grid-template-columns: 1fr 2fr;
+      }
+      button {
+        font-size: 14pt;
+        padding: 5px;
+        cursor: pointer;
+        /* margin: 5px; */
+      }
+      input {
+        font-size: 14pt;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h2 class="center-text">libcat</h2>
+      <div id="app"></div>
+      <!-- <footer> -->
+        <!-- <p class="center-text">For more information on Feathers see <a href="https://docs.feathersjs.com" title="Feathers Documentation" target="blank">docs.feathersjs.com</a>.</p> -->
+      <!-- </footer> -->
+    </main>
+  </body>
+  <script src="bundle.js"></script>
+</html>
