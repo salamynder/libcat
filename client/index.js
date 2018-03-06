@@ -161,8 +161,8 @@ function BookEditBox() {
 
         // when creating child docs, feathers needs the parentID in _parent
         if (newObj[849] && newObj[849].parent) {
-            newObj._parent = newObj[849].parent
-            // newObj.routing = newObj[849].parent
+            // newObj.parent = newObj[849].parent
+            newObj.routing = newObj[849].parent
         }
 
         // Run the update or post new entry:

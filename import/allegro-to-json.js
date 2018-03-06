@@ -15,7 +15,6 @@ const $prettyPrintEntries = true // needs false for ES-bulk-import (ND-JSON)
 const $in = './output.adt'
 const file = fs.readFileSync($in, 'utf8')
 const eol = detect_eol(file)
-        debugger
 const get_partOf_Ids = file 
     .split(eol)
     .filter(line => line.indexOf('#84 _') === 0)
