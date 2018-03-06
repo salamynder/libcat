@@ -4,7 +4,7 @@ libcat - a simple librarians catalogue with allegro-style input for kittens (POW
 
 > Bibliotheksverbund Trier-Klausen-Kues
 
-![interface: first version](./libcat-init.jpg)
+![interface: first version](./libcat-001.jpg)
 
 ## Todo
 
