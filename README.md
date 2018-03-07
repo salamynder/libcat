@@ -2,7 +2,7 @@
 
 libcat - a simple librarians catalogue with allegro-style input for kittens (POW!), initially developed for:
 
-> Bibliotheksverbund Trier-Klausen-Kues
+> Bibliotheksverbund Trier-Klausen-Kues /(bvtkk)
 
 ![interface: first version](./libcat-001.jpg)
 
@@ -11,10 +11,21 @@ libcat - a simple librarians catalogue with allegro-style input for kittens (POW
 ### user-interface-related
 - [x] simple query search ($sqs) giving a list of results in the Search-component
 - [x] clicking one result loads the associated item in the BookEditBox-component
-- [ ] make new catalogue item (use generated _ids by ES)
+- [ ] working with catalogue items
     - [x] simple doc
-    - [ ] child doc
-    - [ ] nested doc
+        - [x] create
+        - [x] update
+        - [ ] remove
+    - [x] child doc (messy module patched implementation, until feathers-elasticsearch gets updated)
+        - [x] create
+        - [x] update
+        - [ ] remove
+    - [x] nested doc (has extra editBoxes for the nested objects)
+        - [x] create
+        - [x] update
+        - [ ] remove
+    - [ ] find children of parent
+    - [ ] find parent of children
 - [ ] GVK import by identifier (PPN)
 - [ ] user authentification
 - [ ] pretty print catalogue card
@@ -25,6 +36,7 @@ libcat - a simple librarians catalogue with allegro-style input for kittens (POW
     - [x] only one index type (doc) - as envisioned for ES6 (_doc)
     - [x] connect articles with books they are in, via allegro #849 field and ES-parent-child-relation. Rationale: We need 84 for regular entries of higher tier writings (übergeordnete Werke), so let's use the last slot of 84 (the 9th) for the join.
     - [x] have volumes of books connected via ES-nested-objects field: sub
+    - [ ] one index, one shard: scaling problems? current number of documents in bvtkk is about 10.000: so out use-case is to small to worry about this? what about others?
 
 ## About
 
