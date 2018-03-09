@@ -13,9 +13,11 @@ const my_es = service({
         type: 'doc'
     }
 })
+const {gvk_ppn} = require('./gvk-request')
 
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
     app.use('/libcat', my_es);
+    app.get('/gvk_ppn/:ppn', gvk_ppn)
 
 };

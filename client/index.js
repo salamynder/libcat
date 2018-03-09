@@ -46,7 +46,8 @@ const txtService = app.service('/libcat');
 
 // window.txtService = txtService
 // window.Book2editM = Book2editM
-
+window.m = m
+// http://sru.gbv.de/gvk?version=1.1&operation=searchRetrieve&maximumRecords=10&recordSchema=picaxml&query=pica.ppn%3D100191029X
 function App() {
     return {
         view: function () {
@@ -240,6 +241,18 @@ function BookEditBox() {
                 }, 'Leeren')
                 , m("p[style=display:inline-block; background-color: white; padding: 2px; margin-left: 5px;]",
                     Book2editM && Book2editM() && Book2editM()._id ? 'Bearbeite Dokument: ' + Book2editM()._id : 'Neuer Eintrag kann erstellt werden.')
+                , m('input', {
+                    oninput: m.withAttr('value', SearchM.setCurrentPPN)
+                    , placeholder: "GVK PPN search [HIT ENTER]"
+                    , title: "Die EditBox wird mit dieser Aktion geleert."
+                    , style: "margin-bottom: 5px; margin-left: 5px;"
+                    , onkeyup: function (e) {
+                        if (e.keyCode == 13 && SearchM.currentPPN) {
+                            m.request("/gvk_ppn/"+SearchM.currentPPN)
+                                .then(res => Book2editM = stream(res))
+                        }
+                    }
+                })
                 , m('textarea#edit-book', {
                     placeholder: "Einträge werden hier editiert/erstellt.",
                     // style: "background-color: gray;",
@@ -294,7 +307,7 @@ function BookEditBox() {
 //                   $path: 'sub',
 //                   'sub.01': 'tome'
 //                 }
-//   
+//
 // }}).then(res => console.log(res) )
 
 m.mount(document.getElementById('app'), App);

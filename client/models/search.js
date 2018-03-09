@@ -6,6 +6,10 @@ var Search = {
     result: [],
     setResult(value) {
         Search.result = value;
+    },
+    currentPPN: '',
+    setCurrentPPN(value) {
+        Search.currentPPN = value
     }
 }
 module.exports = Search

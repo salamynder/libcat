@@ -54,7 +54,8 @@
     "webpack": "^3.11.0",
     "webpack-dev-middleware": "^2.0.6",
     "webpack-hot-middleware": "^2.21.0",
-    "winston": "^2.4.0"
+    "winston": "^2.4.0",
+    "xml-js": "^1.6.2"
   },
   "devDependencies": {
     "chunking-streams": "^0.0.8",
