@@ -26,7 +26,7 @@ libcat - a simple librarians catalogue with allegro-style input for kittens (POW
         - [ ] remove
     - [ ] find children of parent
     - [ ] find parent of children
-- [ ] GVK import by identifier (PPN)
+- [x] GVK import by identifier (PPN)
 - [ ] user authentification
 - [ ] pretty print catalogue card
 
