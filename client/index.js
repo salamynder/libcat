@@ -45,7 +45,7 @@ const app = feathers()
 const txtService = app.service('/libcat');
 
 // window.txtService = txtService
-// window.Book2editM = Book2editM
+window.Book2editM = Book2editM
 window.m = m
 // http://sru.gbv.de/gvk?version=1.1&operation=searchRetrieve&maximumRecords=10&recordSchema=picaxml&query=pica.ppn%3D100191029X
 function App() {
@@ -147,21 +147,21 @@ function printSubForEditing (acc, val) {
     return acc
 }
 
-function lineTo2Array(prev, curr) {
+function lineTo2Array(acc, curr) {
     var textBeforeFirstSpace = curr.slice(0, curr.indexOf(' ')) //i.e. #20 (the specific category)
     var textAfterFirstSpace = curr.slice(curr.indexOf(' ') + 1)
-    if (textBeforeFirstSpace === '849') {
-        // textAfter should be "_po/parentID" (po = part_of)
-        var [po, id] = textAfterFirstSpace.split('/')
+    // textAfter should be "_po/parentID" (po = part_of)
+    var [po, id] = textAfterFirstSpace.split('/')
+    if (textBeforeFirstSpace === '849' && po === '_po') {
         if (po && id)
-            return (prev.push([textBeforeFirstSpace, { name: po, parent: id }]), prev)
+            return (acc.push([textBeforeFirstSpace, { name: po, parent: id }]), acc)
         else
             return alert('Wenn Sie einen Artikel für einen schon angelegten Sammelband anlegen wollen, dann muss Feld 849 so aussehen: "849 _po/ID-des-Sammelbandes". Bitte versuchen Sie es noch einmal.')
     }
     return textAfterFirstSpace
-        ? (prev.push([textBeforeFirstSpace, textAfterFirstSpace])
-            , prev) // yes of horse, #push doesn't return the array, but the number of items in the array...
-        : prev
+        ? (acc.push([textBeforeFirstSpace, textAfterFirstSpace])
+            , acc) // yes of horse, #push doesn't return the array, but the number of items in the array...
+        : acc
 }
 function print_model_with(model, fn) {
     return _reduce(
@@ -264,12 +264,20 @@ function BookEditBox() {
                 // ADD sub
                 , m("button", {
                     onclick: () => {
+                        // no book is edited atm
                         if (Book2editM === null)
                             Book2editM = stream({sub : [{"01": ""}]})
-                        else if (Book2editM().sub && Book2editM().sub.length > 0) Book2editM().sub.push({"01": ""})
-                        else if (!Book2editM().sub)
+                        // book is edited which has already subentry
+                        else if (Book2editM().sub && Book2editM().sub.length > 0)
+                            Book2editM().sub.push({"01": ""})
+                        // book is edited which has no subentries
+                        else if (!Book2editM().sub || (Book2editM().sub && Book2editM().sub.length === 0)) {
                             // Book2editM = stream({sub : [{"01": ""}]})
                             Book2editM().sub = [{"01": ""}]
+                        }
+                        else {
+                            console.log('[+] Sub: missing implementation!')
+                        }
                     }}, "[+] Sub")
                 // REMOVE sub
                 , m("button", {

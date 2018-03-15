@@ -157,7 +157,9 @@ function test_and_transform (str) {
                         ? " "+_get(r, name_c)
                         : '')
                     + " / "
-                    + (os.s0.length ? os.s0[0]._text : os.s0._text)
+                    + (os.s0 && os.s0.length
+                        ? os.s0[0]._text
+                        : (os.s0 ? os.s0._text : os._text))
             })
         }
     }
